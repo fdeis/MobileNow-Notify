@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import Cocoa
+
+func watchForFileEvent() {
+    
+}

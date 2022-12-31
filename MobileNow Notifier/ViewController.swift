@@ -7,6 +7,7 @@
 
 import Cocoa
 import Foundation
+import UserNotifications
 
 class ViewController: NSViewController {
 
@@ -20,6 +21,7 @@ class ViewController: NSViewController {
     
     // Popup progress bar outlet
     @IBOutlet weak var notificationIndeterminate: NSProgressIndicator!
+    @IBOutlet weak var notificationIndeterminateLabel: NSTextField!
     
     
     // We declare the popup variables
@@ -28,6 +30,10 @@ class ViewController: NSViewController {
     var popupWindowNotificationMainButton = String()
     var popupWindowNotificationSecondaryButton = String()
     var popupWindowNotificationWatch = String()
+    var popupWindowNotificationWatchStatus = Bool()
+    var popupWindowIndeterminateStatus = Bool()
+    var popupWindowIndeterminateLabel = String()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,27 +56,65 @@ class ViewController: NSViewController {
                 case CommandLineParseArguments.SecondaryButton:
                     popupWindowNotificationSecondaryButton = commandLineArguments[arg+1]
                 case CommandLineParseArguments.watch:
+                    popupWindowNotificationWatchStatus = true
                     popupWindowNotificationWatch = commandLineArguments[arg+1]
+                case CommandLineParseArguments.indeterminate:
+                    popupWindowIndeterminateStatus = true
+                    popupWindowIndeterminateLabel = commandLineArguments[arg+1]
 
                 /// End of command line cycling
                   default: break
                   }
               }
         
-        // Set notification interface values
-        self.notificationTitle.stringValue = popupWindowNotificationTitle
-        self.notificationMessage.stringValue = popupWindowNotificationMessage.replacingOccurrences(of: "\\n", with: "\n")
-        self.mainButton.title = popupWindowNotificationMainButton
-        self.secondaryButton.title = popupWindowNotificationSecondaryButton
+        // Call function to setup app layout
+        layoutSetup()
+        
     }
     
     override func viewDidAppear() {
+        // Lock notification window in the center of the screen
+        self.view.window?.isMovable = false
     }
 
     override var representedObject: Any? {
         didSet {
         /// Update the view, if already loaded.
         }
+    }
+    
+    func layoutSetup() {
+        // Set notification title
+        self.notificationTitle.stringValue = popupWindowNotificationTitle
+        
+        // Set notification message
+        self.notificationMessage.stringValue = popupWindowNotificationMessage.replacingOccurrences(of: "\\n", with: "\n")
+        
+        // Set main button label and status
+        self.mainButton.title = popupWindowNotificationMainButton
+        if popupWindowNotificationWatchStatus == true {
+            self.mainButton.isEnabled = false
+        }
+        
+        
+        // Set secondary button label and status
+        if popupWindowNotificationSecondaryButton != "" {
+            self.secondaryButton.title = popupWindowNotificationSecondaryButton
+            self.secondaryButton.isHidden = false
+        }
+        
+        // Set indeterminate progress bar status
+        if popupWindowIndeterminateStatus == true {
+            self.notificationIndeterminate.isHidden = false
+            self.notificationIndeterminateLabel.stringValue = popupWindowIndeterminateLabel
+            self.notificationIndeterminateLabel.sizeToFit()
+            self.notificationIndeterminateLabel.isHidden = false
+            self.notificationIndeterminate.startAnimation(self)
+        }
+    }
+    
+    func watchFilePath() {
+        
     }
     
     // Receive button actions

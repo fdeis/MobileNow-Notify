@@ -14,4 +14,6 @@ struct CommandLineParseArguments {
     static let mainButton = "--mainButton"
     static let SecondaryButton = "--secondaryButton"
     static let watch = "--watch"
+    static let indeterminate = "--progressBarLabel"
+    static let lockWindow = "--lockWindow"
 }
