@@ -11,6 +11,11 @@ import UserNotifications
 
 class ViewController: NSViewController {
 
+    // Set UserNotification Environment
+    let uNC = UNUserNotificationCenter.current()
+    
+    
+    
     // Popup buttons outlets
     @IBOutlet weak var mainButton: NSButton!
     @IBOutlet weak var secondaryButton: NSButton!

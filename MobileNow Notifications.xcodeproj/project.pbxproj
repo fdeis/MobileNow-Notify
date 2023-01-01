@@ -22,10 +22,8 @@
 		503A00BF286156E400A8653C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		503A00C1286156E500A8653C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		503A00C4286156E500A8653C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		503A00C6286156E500A8653C /* MobileNow_Notifier.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MobileNow_Notifier.entitlements; sourceTree = "<group>"; };
 		5046ECD02861928C00870280 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Global.swift; path = "MobileNow Notifier/Constants/Global.swift"; sourceTree = SOURCE_ROOT; };
 		5046ECDD2868C45400870280 /* CompleteWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteWindowViewController.swift; sourceTree = "<group>"; };
-		5046ECDF28696C9F00870280 /* MobileNow-Notifier-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MobileNow-Notifier-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5046ECE02869722A00870280 /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,13 +57,11 @@
 		503A00BC286156E400A8653C /* MobileNow Notifier */ = {
 			isa = PBXGroup;
 			children = (
-				5046ECDF28696C9F00870280 /* MobileNow-Notifier-Info.plist */,
 				503A00BD286156E400A8653C /* AppDelegate.swift */,
 				503A00BF286156E400A8653C /* ViewController.swift */,
 				5046ECDD2868C45400870280 /* CompleteWindowViewController.swift */,
 				503A00C1286156E500A8653C /* Assets.xcassets */,
 				503A00C3286156E500A8653C /* Main.storyboard */,
-				503A00C6286156E500A8653C /* MobileNow_Notifier.entitlements */,
 				5046ECCF2861922F00870280 /* Functions */,
 				5046ECCE2861922600870280 /* Constants */,
 			);
@@ -123,7 +119,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 503A00B5286156E400A8653C /* Build configuration list for PBXProject "MobileNow Notifier" */;
+			buildConfigurationList = 503A00B5286156E400A8653C /* Build configuration list for PBXProject "MobileNow Notifications" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -305,6 +301,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "MobileNow Notifier/MobileNow_Notifier.entitlements";
 				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -315,6 +312,7 @@
 				INFOPLIST_FILE = "MobileNow-Notifier-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "MobileNow Notifier";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -339,6 +337,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "MobileNow Notifier/MobileNow_Notifier.entitlements";
 				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -349,6 +348,7 @@
 				INFOPLIST_FILE = "MobileNow-Notifier-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "MobileNow Notifier";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -368,7 +368,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		503A00B5286156E400A8653C /* Build configuration list for PBXProject "MobileNow Notifier" */ = {
+		503A00B5286156E400A8653C /* Build configuration list for PBXProject "MobileNow Notifications" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				503A00C7286156E500A8653C /* Debug */,
