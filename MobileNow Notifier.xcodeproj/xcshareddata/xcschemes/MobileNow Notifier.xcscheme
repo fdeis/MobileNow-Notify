@@ -17,7 +17,7 @@
                BlueprintIdentifier = "503A00B9286156E400A8653C"
                BuildableName = "MobileNow Notifier.app"
                BlueprintName = "MobileNow Notifier"
-               ReferencedContainer = "container:MobileNow Notifications.xcodeproj">
+               ReferencedContainer = "container:MobileNow Notifier.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,7 +40,7 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       enableGPUValidationMode = "1"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "NO">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
@@ -48,7 +48,7 @@
             BlueprintIdentifier = "503A00B9286156E400A8653C"
             BuildableName = "MobileNow Notifier.app"
             BlueprintName = "MobileNow Notifier"
-            ReferencedContainer = "container:MobileNow Notifications.xcodeproj">
+            ReferencedContainer = "container:MobileNow Notifier.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -57,24 +57,40 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--watch &quot;~/Desktop/watch&quot;"
+            argument = "--watchlabel &quot;Procesando Informaci&#xf3;n...&quot;"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--progressBarLabel &quot;Recopilando informaci&#xf3;n...&quot;"
+            argument = "--hidehelpbutton"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--message &quot;Hemos identificado un riesgo de seguridad en tu Mac y se ha restringido el acceso a Internet. Para m&#xe1;s informaci&#xf3;n contacta a tu equipo de soporte&quot;"
+            argument = "--icon &quot;lock.laptopcomputer&quot;"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--bartitle &quot;MobileNow Notify&quot;"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--fullscreen"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--watch &quot;/tmp/mobi.mobilenow.bom&quot;"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--message &quot;Tu Mac ha sido afectado por un posible malware. Hemos aislado tu computador de la red corporativa y estamos recolectando los datos necesarios para una investigaci&#xf3;n de seguridad. Por favor comunicate al telefono xxx-xxx-xxx para mas informacion&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--mainButton &quot;OK&quot;"
+            argument = "--mainbutton &quot;OK&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--secondaryButton &quot;Cancelar&quot;"
-            isEnabled = "YES">
+            argument = "--secondarybutton &quot;Cancelar&quot;"
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>
@@ -91,7 +107,7 @@
             BlueprintIdentifier = "503A00B9286156E400A8653C"
             BuildableName = "MobileNow Notifier.app"
             BlueprintName = "MobileNow Notifier"
-            ReferencedContainer = "container:MobileNow Notifications.xcodeproj">
+            ReferencedContainer = "container:MobileNow Notifier.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

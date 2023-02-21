@@ -3,17 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		503A00BE286156E400A8653C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503A00BD286156E400A8653C /* AppDelegate.swift */; };
-		503A00C0286156E400A8653C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503A00BF286156E400A8653C /* ViewController.swift */; };
 		503A00C2286156E500A8653C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503A00C1286156E500A8653C /* Assets.xcassets */; };
 		503A00C5286156E500A8653C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503A00C3286156E500A8653C /* Main.storyboard */; };
-		5046ECD12861928C00870280 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5046ECD02861928C00870280 /* Global.swift */; };
-		5046ECDE2868C45400870280 /* CompleteWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5046ECDD2868C45400870280 /* CompleteWindowViewController.swift */; };
-		5046ECE12869722A00870280 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5046ECE02869722A00870280 /* GlobalFunctions.swift */; };
+		5046ECD12861928C00870280 /* JamfProConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5046ECD02861928C00870280 /* JamfProConstants.swift */; };
+		5046ECE12869722A00870280 /* FileMonitoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5046ECE02869722A00870280 /* FileMonitoring.swift */; };
+		504700FA29957009008EF694 /* BackgroundWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504700F829957009008EF694 /* BackgroundWindowController.swift */; };
+		50A3C6BD2961FE1B00CA6FD4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503A00BF286156E400A8653C /* ViewController.swift */; };
+		50B75A1A299A92460097B43A /* JSONConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B75A19299A92460097B43A /* JSONConstants.swift */; };
+		50B75A1C299A93240097B43A /* CommandLineConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B75A1B299A93240097B43A /* CommandLineConstants.swift */; };
+		50B75A1E299A93980097B43A /* AppBundleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B75A1D299A93980097B43A /* AppBundleConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,9 +25,12 @@
 		503A00BF286156E400A8653C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		503A00C1286156E500A8653C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		503A00C4286156E500A8653C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5046ECD02861928C00870280 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Global.swift; path = "MobileNow Notifier/Constants/Global.swift"; sourceTree = SOURCE_ROOT; };
-		5046ECDD2868C45400870280 /* CompleteWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteWindowViewController.swift; sourceTree = "<group>"; };
-		5046ECE02869722A00870280 /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
+		5046ECD02861928C00870280 /* JamfProConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JamfProConstants.swift; path = "MobileNow Notifier/VC Constants/JamfProConstants.swift"; sourceTree = SOURCE_ROOT; };
+		5046ECE02869722A00870280 /* FileMonitoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMonitoring.swift; sourceTree = "<group>"; };
+		504700F829957009008EF694 /* BackgroundWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundWindowController.swift; sourceTree = "<group>"; };
+		50B75A19299A92460097B43A /* JSONConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConstants.swift; sourceTree = "<group>"; };
+		50B75A1B299A93240097B43A /* CommandLineConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineConstants.swift; sourceTree = "<group>"; };
+		50B75A1D299A93980097B43A /* AppBundleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBundleConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,29 +65,32 @@
 			children = (
 				503A00BD286156E400A8653C /* AppDelegate.swift */,
 				503A00BF286156E400A8653C /* ViewController.swift */,
-				5046ECDD2868C45400870280 /* CompleteWindowViewController.swift */,
+				504700F829957009008EF694 /* BackgroundWindowController.swift */,
 				503A00C1286156E500A8653C /* Assets.xcassets */,
 				503A00C3286156E500A8653C /* Main.storyboard */,
-				5046ECCF2861922F00870280 /* Functions */,
-				5046ECCE2861922600870280 /* Constants */,
+				5046ECCF2861922F00870280 /* VC Functions */,
+				5046ECCE2861922600870280 /* VC Constants */,
 			);
 			path = "MobileNow Notifier";
 			sourceTree = "<group>";
 		};
-		5046ECCE2861922600870280 /* Constants */ = {
+		5046ECCE2861922600870280 /* VC Constants */ = {
 			isa = PBXGroup;
 			children = (
-				5046ECD02861928C00870280 /* Global.swift */,
+				5046ECD02861928C00870280 /* JamfProConstants.swift */,
+				50B75A1B299A93240097B43A /* CommandLineConstants.swift */,
+				50B75A19299A92460097B43A /* JSONConstants.swift */,
+				50B75A1D299A93980097B43A /* AppBundleConstants.swift */,
 			);
-			path = Constants;
+			path = "VC Constants";
 			sourceTree = "<group>";
 		};
-		5046ECCF2861922F00870280 /* Functions */ = {
+		5046ECCF2861922F00870280 /* VC Functions */ = {
 			isa = PBXGroup;
 			children = (
-				5046ECE02869722A00870280 /* GlobalFunctions.swift */,
+				5046ECE02869722A00870280 /* FileMonitoring.swift */,
 			);
-			path = Functions;
+			path = "VC Functions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,8 +128,8 @@
 					};
 				};
 			};
-			buildConfigurationList = 503A00B5286156E400A8653C /* Build configuration list for PBXProject "MobileNow Notifications" */;
-			compatibilityVersion = "Xcode 13.0";
+			buildConfigurationList = 503A00B5286156E400A8653C /* Build configuration list for PBXProject "MobileNow Notifier" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -154,11 +163,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				503A00C0286156E400A8653C /* ViewController.swift in Sources */,
-				5046ECDE2868C45400870280 /* CompleteWindowViewController.swift in Sources */,
-				5046ECE12869722A00870280 /* GlobalFunctions.swift in Sources */,
+				50A3C6BD2961FE1B00CA6FD4 /* ViewController.swift in Sources */,
+				5046ECE12869722A00870280 /* FileMonitoring.swift in Sources */,
+				504700FA29957009008EF694 /* BackgroundWindowController.swift in Sources */,
+				50B75A1E299A93980097B43A /* AppBundleConstants.swift in Sources */,
 				503A00BE286156E400A8653C /* AppDelegate.swift in Sources */,
-				5046ECD12861928C00870280 /* Global.swift in Sources */,
+				5046ECD12861928C00870280 /* JamfProConstants.swift in Sources */,
+				50B75A1C299A93240097B43A /* CommandLineConstants.swift in Sources */,
+				50B75A1A299A92460097B43A /* JSONConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,7 +240,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -284,7 +296,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -300,8 +312,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "MobileNow Notifier/MobileNow_Notifier.entitlements";
-				CODE_SIGN_IDENTITY = "-";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -320,10 +331,11 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "mobi.mobilenow.MobileNow-Notifier";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -336,8 +348,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "MobileNow Notifier/MobileNow_Notifier.entitlements";
-				CODE_SIGN_IDENTITY = "-";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -356,10 +367,11 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "mobi.mobilenow.MobileNow-Notifier";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -368,7 +380,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		503A00B5286156E400A8653C /* Build configuration list for PBXProject "MobileNow Notifications" */ = {
+		503A00B5286156E400A8653C /* Build configuration list for PBXProject "MobileNow Notifier" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				503A00C7286156E500A8653C /* Debug */,
