@@ -10,6 +10,7 @@ import Foundation
 struct AppBundleDefaults {
 
     static let notificationIcon = "laptopcomputer.trianglebadge.exclamationmark"
+    static let notificationIconSize: CGFloat = 68
 
     static let notificationTitle = "Security Alert"
     static let notificationMessage = ""

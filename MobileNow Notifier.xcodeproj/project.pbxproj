@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5036C7FD29A72D42008B83A2 /* OpenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036C7FC29A72D42008B83A2 /* OpenApp.swift */; };
 		503A00BE286156E400A8653C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503A00BD286156E400A8653C /* AppDelegate.swift */; };
 		503A00C2286156E500A8653C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503A00C1286156E500A8653C /* Assets.xcassets */; };
 		503A00C5286156E500A8653C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503A00C3286156E500A8653C /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5036C7FC29A72D42008B83A2 /* OpenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenApp.swift; sourceTree = "<group>"; };
 		503A00BA286156E400A8653C /* MobileNow Notifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MobileNow Notifier.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503A00BD286156E400A8653C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		503A00BF286156E400A8653C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				5046ECE02869722A00870280 /* FileMonitoring.swift */,
+				5036C7FC29A72D42008B83A2 /* OpenApp.swift */,
 			);
 			path = "VC Functions";
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				503A00BE286156E400A8653C /* AppDelegate.swift in Sources */,
 				5046ECD12861928C00870280 /* JamfProConstants.swift in Sources */,
 				50B75A1C299A93240097B43A /* CommandLineConstants.swift in Sources */,
+				5036C7FD29A72D42008B83A2 /* OpenApp.swift in Sources */,
 				50B75A1A299A92460097B43A /* JSONConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,7 +336,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "mobi.mobilenow.MobileNow-Notifier";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -368,7 +372,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "mobi.mobilenow.MobileNow-Notifier";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

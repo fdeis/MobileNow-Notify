@@ -48,6 +48,7 @@ class ViewController: NSViewController {
     var popupWindowNotificationWatchStatus = Bool()
     var popupWindowIndeterminateStatus = Bool()
     var popupWindowNotificationIcon = String()
+    var popupWindowMainButtonAction = String()
     
     // Notification window options state
     var popupWindowNotificationIsMovable = false
@@ -59,8 +60,6 @@ class ViewController: NSViewController {
     var popupWindowIndeterminateLabel = String()
     var fileToStartWatching = String()
     var watchForFileState = Bool()
-    var softwareArrayComplete = Bool()
-
     
     
     override func viewDidLoad() {
@@ -68,6 +67,7 @@ class ViewController: NSViewController {
 
         // Make the notifier window the front window
         NSApplication.shared.activate(ignoringOtherApps: true)
+        
         
         // Get command line arguments
         let commandLineArguments = CommandLine.arguments
@@ -77,34 +77,44 @@ class ViewController: NSViewController {
             switch commandLineArguments[arg] {
                 case CommandLineParseArguments.commandLineForBarTitle:
                     popupWindowNotificationBarTitle = commandLineArguments[arg+1]
+                
                 case CommandLineParseArguments.commandLineForTitle:
                     popupWindowNotificationTitle = commandLineArguments[arg+1]
+                
                 case CommandLineParseArguments.commandLineForMessage:
                     popupWindowNotificationMessage = commandLineArguments[arg+1]
+                
                 case CommandLineParseArguments.commandLineForPopupIcon:
                     useCustomNotificationIcon = true
                     popupWindowNotificationIcon = commandLineArguments[arg+1]
+                
                 case CommandLineParseArguments.commandLineForMainButton:
                     popupWindowNotificationMainButton = commandLineArguments[arg+1]
+                
                 case CommandLineParseArguments.commandLineForSecondaryButton:
                     popupWindowNotificationSecondaryButton = commandLineArguments[arg+1]
+                
                 case CommandLineParseArguments.commandLineForWatchForFile:
                     watchForFileState = true
                     fileToStartWatching = commandLineArguments[arg+1]
+                
                 case CommandLineParseArguments.commandLineForWatchForFileLabel:
                     popupWindowIndeterminateLabel = commandLineArguments[arg+1]
+                
                 case CommandLineParseArguments.commandLineForDisplayFullScreen:
                     useFullScreen = true
+                
                 case CommandLineParseArguments.commandLineForHelpButton:
                     popupWindowHelpButtonIsHidden = true
+                
+                case CommandLineParseArguments.commandLineForMainButtonAction:
+                    popupWindowMainButtonAction = commandLineArguments[arg+1]
                     
                 default: break
             }
         }
         
         layoutSetup()
-        
-        
         
         if watchForFileState {
             startWatchingForFile(pathToWatch: fileToStartWatching, label: popupWindowIndeterminateLabel)
@@ -114,6 +124,10 @@ class ViewController: NSViewController {
     
     
     override func viewDidAppear() {
+        
+        /// Move window to topmost position and keep there
+        view.window?.level = .floating
+
         
         if popupWindowNotificationBarTitle != "" {
             self.view.window?.title = popupWindowNotificationBarTitle
@@ -172,8 +186,9 @@ class ViewController: NSViewController {
         
         if useCustomNotificationIcon {
             if #available(macOS 11.0, *) {
-                let symbolConfiguration = NSImage.SymbolConfiguration(pointSize: 72, weight: .light)
+                let symbolConfiguration = NSImage.SymbolConfiguration(pointSize: AppBundleDefaults.notificationIconSize, weight: .light)
                 notificationIcon.symbolConfiguration = symbolConfiguration
+                
                 notificationIcon.image = NSImage(systemSymbolName: popupWindowNotificationIcon, accessibilityDescription: nil)
             } else {
                 notificationIcon.image = NSImage(named: "NSCaution")
@@ -181,7 +196,7 @@ class ViewController: NSViewController {
 
         } else {
             if #available(macOS 11.0, *) {
-                let symbolConfiguration = NSImage.SymbolConfiguration(pointSize: 72, weight: .light)
+                let symbolConfiguration = NSImage.SymbolConfiguration(pointSize: AppBundleDefaults.notificationIconSize, weight: .light)
                 notificationIcon.symbolConfiguration = symbolConfiguration
                 notificationIcon.image = NSImage(systemSymbolName: AppBundleDefaults.notificationIcon, accessibilityDescription: nil)
             } else {

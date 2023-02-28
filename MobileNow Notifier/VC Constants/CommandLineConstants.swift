@@ -19,4 +19,6 @@ struct CommandLineParseArguments {
     static let commandLineForWatchForFile = "--watch"
     static let commandLineForWatchForFileLabel = "--watchlabel"
     static let commandLineForHelpButton = "--hidehelpbutton"
+    static let commandLineForMainButtonAction = "--mainbuttonaction"
+    static let commandLineForTimer = "--timer"
 }

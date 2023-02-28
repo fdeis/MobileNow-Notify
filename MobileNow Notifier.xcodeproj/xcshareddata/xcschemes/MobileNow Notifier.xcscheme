@@ -57,6 +57,10 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "--mainbuttonaction &quot;com.apple.Chess&quot;"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "--watchlabel &quot;Procesando Informaci&#xf3;n...&quot;"
             isEnabled = "NO">
          </CommandLineArgument>
@@ -65,7 +69,7 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--icon &quot;lock.laptopcomputer&quot;"
+            argument = "--icon &quot;power.circle&quot;"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
@@ -81,11 +85,11 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--message &quot;Tu Mac ha sido afectado por un posible malware. Hemos aislado tu computador de la red corporativa y estamos recolectando los datos necesarios para una investigaci&#xf3;n de seguridad. Por favor comunicate al telefono xxx-xxx-xxx para mas informacion&quot;"
+            argument = "--message &quot;Tu Mac ha sido afectado por un software malicioso. \\n \\nComo medida preventiva ha sido aislado de la red corporativa y se est&#xe1; recopilando informaci&#xf3;n para una investigaci&#xf3;n de seguridad. Ataques de malware e intentos de phishing presentan el mayor riesgo para los datos de la organizaci&#xf3;n. Contacta al departamento de Seguridad de TI llamando al n&#xfa;mero XXX-XXX-XXXX para m&#xe1;s informaci&#xf3;n.&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--mainbutton &quot;OK&quot;"
+            argument = "--mainbutton &quot;Continuar&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
