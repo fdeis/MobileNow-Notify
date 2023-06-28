@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5036C7FD29A72D42008B83A2 /* OpenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036C7FC29A72D42008B83A2 /* OpenApp.swift */; };
+		5036C7FD29A72D42008B83A2 /* ButtonActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036C7FC29A72D42008B83A2 /* ButtonActions.swift */; };
+		5036C7FF29B0588D008B83A2 /* HelpBubbleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036C7FE29B0588D008B83A2 /* HelpBubbleVC.swift */; };
 		503A00BE286156E400A8653C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503A00BD286156E400A8653C /* AppDelegate.swift */; };
 		503A00C2286156E500A8653C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503A00C1286156E500A8653C /* Assets.xcassets */; };
 		503A00C5286156E500A8653C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503A00C3286156E500A8653C /* Main.storyboard */; };
@@ -18,10 +19,12 @@
 		50B75A1A299A92460097B43A /* JSONConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B75A19299A92460097B43A /* JSONConstants.swift */; };
 		50B75A1C299A93240097B43A /* CommandLineConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B75A1B299A93240097B43A /* CommandLineConstants.swift */; };
 		50B75A1E299A93980097B43A /* AppBundleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B75A1D299A93980097B43A /* AppBundleConstants.swift */; };
+		50CC089C2A4C84B10084BEF6 /* MobileNowValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CC089B2A4C84B10084BEF6 /* MobileNowValidation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5036C7FC29A72D42008B83A2 /* OpenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenApp.swift; sourceTree = "<group>"; };
+		5036C7FC29A72D42008B83A2 /* ButtonActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonActions.swift; sourceTree = "<group>"; };
+		5036C7FE29B0588D008B83A2 /* HelpBubbleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpBubbleVC.swift; sourceTree = "<group>"; };
 		503A00BA286156E400A8653C /* MobileNow Notifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MobileNow Notifier.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503A00BD286156E400A8653C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		503A00BF286156E400A8653C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,6 +36,7 @@
 		50B75A19299A92460097B43A /* JSONConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConstants.swift; sourceTree = "<group>"; };
 		50B75A1B299A93240097B43A /* CommandLineConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineConstants.swift; sourceTree = "<group>"; };
 		50B75A1D299A93980097B43A /* AppBundleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBundleConstants.swift; sourceTree = "<group>"; };
+		50CC089B2A4C84B10084BEF6 /* MobileNowValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNowValidation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 			children = (
 				503A00BD286156E400A8653C /* AppDelegate.swift */,
 				503A00BF286156E400A8653C /* ViewController.swift */,
+				5036C7FE29B0588D008B83A2 /* HelpBubbleVC.swift */,
 				504700F829957009008EF694 /* BackgroundWindowController.swift */,
 				503A00C1286156E500A8653C /* Assets.xcassets */,
 				503A00C3286156E500A8653C /* Main.storyboard */,
@@ -91,7 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				5046ECE02869722A00870280 /* FileMonitoring.swift */,
-				5036C7FC29A72D42008B83A2 /* OpenApp.swift */,
+				5036C7FC29A72D42008B83A2 /* ButtonActions.swift */,
+				50CC089B2A4C84B10084BEF6 /* MobileNowValidation.swift */,
 			);
 			path = "VC Functions";
 			sourceTree = "<group>";
@@ -167,13 +173,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				50A3C6BD2961FE1B00CA6FD4 /* ViewController.swift in Sources */,
+				5036C7FF29B0588D008B83A2 /* HelpBubbleVC.swift in Sources */,
 				5046ECE12869722A00870280 /* FileMonitoring.swift in Sources */,
 				504700FA29957009008EF694 /* BackgroundWindowController.swift in Sources */,
 				50B75A1E299A93980097B43A /* AppBundleConstants.swift in Sources */,
 				503A00BE286156E400A8653C /* AppDelegate.swift in Sources */,
 				5046ECD12861928C00870280 /* JamfProConstants.swift in Sources */,
 				50B75A1C299A93240097B43A /* CommandLineConstants.swift in Sources */,
-				5036C7FD29A72D42008B83A2 /* OpenApp.swift in Sources */,
+				5036C7FD29A72D42008B83A2 /* ButtonActions.swift in Sources */,
+				50CC089C2A4C84B10084BEF6 /* MobileNowValidation.swift in Sources */,
 				50B75A1A299A92460097B43A /* JSONConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,7 +252,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -300,7 +308,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -335,7 +343,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "mobi.mobilenow.MobileNow-Notifier";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -371,7 +379,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "mobi.mobilenow.MobileNow-Notifier";
 				PRODUCT_NAME = "$(TARGET_NAME)";

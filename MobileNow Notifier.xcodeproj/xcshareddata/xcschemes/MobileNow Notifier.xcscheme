@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1410"
-   version = "1.3">
+   version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -38,6 +38,7 @@
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      debugXPCServices = "NO"
       debugServiceExtension = "internal"
       enableGPUValidationMode = "1"
       allowLocationSimulation = "NO">
@@ -53,47 +54,43 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "--title &quot;Alerta de Seguridad&quot;"
+            argument = "--title &quot;Mensaje de Seguridad&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--mainbuttonaction &quot;com.apple.Chess&quot;"
+            argument = "--message &quot;Recuerda al menos una vez a la semana conectarte a la VPN de Banco, para recibir actualizaciones y as&#xed; mantener tu Macbook en cumplimiento. \\n\\n Haz click en el bot&#xf3;n abajo para abrir el app de VPN.&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--watchlabel &quot;Procesando Informaci&#xf3;n...&quot;"
-            isEnabled = "NO">
+            argument = "--icon &quot;lock.shield&quot;"
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--hidehelpbutton"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "--icon &quot;power.circle&quot;"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "--bartitle &quot;MobileNow Notify&quot;"
-            isEnabled = "NO">
+            argument = "--helpbuttondescription &quot;Este notificaci&#xf3;n ha sido enviada por Falabella Tecnologia.&quot;"
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--fullscreen"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--watch &quot;/tmp/mobi.mobilenow.bom&quot;"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "--message &quot;Tu Mac ha sido afectado por un software malicioso. \\n \\nComo medida preventiva ha sido aislado de la red corporativa y se est&#xe1; recopilando informaci&#xf3;n para una investigaci&#xf3;n de seguridad. Ataques de malware e intentos de phishing presentan el mayor riesgo para los datos de la organizaci&#xf3;n. Contacta al departamento de Seguridad de TI llamando al n&#xfa;mero XXX-XXX-XXXX para m&#xe1;s informaci&#xf3;n.&quot;"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "--mainbutton &quot;Continuar&quot;"
+            argument = "--mainbutton &quot;Abrir VPN&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--secondarybutton &quot;Cancelar&quot;"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--actiontype &quot;app&quot;"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--mainbuttonaction &quot;com.fortinet.FortiClient&quot;"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--mainbuttonaction &quot;http://www.apple.com&quot;"
             isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>

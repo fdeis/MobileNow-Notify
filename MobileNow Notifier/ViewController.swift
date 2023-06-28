@@ -16,6 +16,7 @@
 import Cocoa
 import Foundation
 import UserNotifications
+import os
 
 var backgroundWindow: SecondWindowController?
 
@@ -34,8 +35,9 @@ class ViewController: NSViewController {
     @IBOutlet weak var notificationHelpButton: NSButton!
     
     // Progress bar outlets
-    @IBOutlet weak var notificationProgressBar: NSProgressIndicator!
-    @IBOutlet weak var notificationProgressBarLabel: NSTextField!
+    @IBOutlet weak var notificationProgressIndicator: NSProgressIndicator!
+    @IBOutlet weak var notificationProgressIndicatorLabel: NSTextField!
+    
     
     
     // Command line argument variable types
@@ -48,26 +50,29 @@ class ViewController: NSViewController {
     var popupWindowNotificationWatchStatus = Bool()
     var popupWindowIndeterminateStatus = Bool()
     var popupWindowNotificationIcon = String()
-    var popupWindowMainButtonAction = String()
+    var mainButtonAction = String()
     
     // Notification window options state
     var popupWindowNotificationIsMovable = false
-    var popupWindowHelpButtonIsHidden = false
-    var useFullScreen = Bool()
+    var helpButtonIsVisible = false
+    var popupWindowHelpButtonDescription = String()
+    var useFullScreenApp = Bool()
     var useCustomNotificationIcon = Bool()
+    var mainButtonActionType = String()
     
     //
     var popupWindowIndeterminateLabel = String()
     var fileToStartWatching = String()
-    var watchForFileState = Bool()
     
+    //
+    let logger = Logger(subsystem: "mobi.mobilenow.MobileNow-Notifier", category: "Action")
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Make the notifier window the front window
-        NSApplication.shared.activate(ignoringOtherApps: true)
-        
+        NSApp.activate(ignoringOtherApps: true)
+        //NSApp.windows[0].makeKeyAndOrderFront(self)
         
         // Get command line arguments
         let commandLineArguments = CommandLine.arguments
@@ -75,50 +80,53 @@ class ViewController: NSViewController {
         /// CycommandLineFore through CLI input and set all the options
         for arg in 0...(commandLineArguments.count - 1) {
             switch commandLineArguments[arg] {
+                // Seets the app title
                 case CommandLineParseArguments.commandLineForBarTitle:
                     popupWindowNotificationBarTitle = commandLineArguments[arg+1]
                 
+                // Sets the notification title
                 case CommandLineParseArguments.commandLineForTitle:
                     popupWindowNotificationTitle = commandLineArguments[arg+1]
-                
+                    
+                // Sets the notification message
                 case CommandLineParseArguments.commandLineForMessage:
                     popupWindowNotificationMessage = commandLineArguments[arg+1]
                 
-                case CommandLineParseArguments.commandLineForPopupIcon:
+                // Sets the nofiticaion alert icon
+                case CommandLineParseArguments.commandLineForIcon:
                     useCustomNotificationIcon = true
                     popupWindowNotificationIcon = commandLineArguments[arg+1]
                 
+                // Sets the main button label
                 case CommandLineParseArguments.commandLineForMainButton:
                     popupWindowNotificationMainButton = commandLineArguments[arg+1]
                 
+                // Shows seconday button and sets the secondary button label
                 case CommandLineParseArguments.commandLineForSecondaryButton:
                     popupWindowNotificationSecondaryButton = commandLineArguments[arg+1]
                 
-                case CommandLineParseArguments.commandLineForWatchForFile:
-                    watchForFileState = true
-                    fileToStartWatching = commandLineArguments[arg+1]
-                
-                case CommandLineParseArguments.commandLineForWatchForFileLabel:
-                    popupWindowIndeterminateLabel = commandLineArguments[arg+1]
-                
+                // Sets the notification app to use full screen
                 case CommandLineParseArguments.commandLineForDisplayFullScreen:
-                    useFullScreen = true
+                    useFullScreenApp = true
                 
+                // Shows the help button and sets the description text
                 case CommandLineParseArguments.commandLineForHelpButton:
-                    popupWindowHelpButtonIsHidden = true
+                    helpButtonIsVisible = true
+                    popupWindowHelpButtonDescription = commandLineArguments[arg+1]
                 
+                // Sets the action for the main button
                 case CommandLineParseArguments.commandLineForMainButtonAction:
-                    popupWindowMainButtonAction = commandLineArguments[arg+1]
+                    mainButtonAction = commandLineArguments[arg+1]
                     
+                case CommandLineParseArguments.commandLineForActionType:
+                    mainButtonActionType = commandLineArguments[arg+1]
+        
                 default: break
             }
         }
         
         layoutSetup()
-        
-        if watchForFileState {
-            startWatchingForFile(pathToWatch: fileToStartWatching, label: popupWindowIndeterminateLabel)
-        }
+    
         
     }
     
@@ -133,8 +141,8 @@ class ViewController: NSViewController {
             self.view.window?.title = popupWindowNotificationBarTitle
         }
         
-        if popupWindowHelpButtonIsHidden {
-            self.notificationHelpButton.isHidden = true
+        if helpButtonIsVisible {
+            self.notificationHelpButton.isHidden = false
         }
         
         if popupWindowNotificationIsMovable {
@@ -143,9 +151,21 @@ class ViewController: NSViewController {
             self.view.window?.isMovable = false
         }
         
-        if useFullScreen {
+        if useFullScreenApp == true {
             displayBackgroundWindow()
         }
+        
+        // Check if the Mac is enrolled in MobileNow
+        let macIsEnrolled = checkMobileNowSubscription()
+        if !macIsEnrolled {
+            let alert = NSAlert()
+            alert.messageText = MobileNowSubscriptionAlert.alertTitle
+            alert.informativeText = MobileNowSubscriptionAlert.alertText
+            alert.alertStyle = .warning
+            alert.addButton(withTitle: MobileNowSubscriptionAlert.alertButton)
+            alert.beginSheetModal(for: NSApp.windows[0]) { response in NSApp.terminate(self)}
+        }
+        
         
     }
 
@@ -186,7 +206,7 @@ class ViewController: NSViewController {
         
         if useCustomNotificationIcon {
             if #available(macOS 11.0, *) {
-                let symbolConfiguration = NSImage.SymbolConfiguration(pointSize: AppBundleDefaults.notificationIconSize, weight: .light)
+                let symbolConfiguration = NSImage.SymbolConfiguration(pointSize: AppBundleDefaults.notificationIconSize, weight: AppBundleDefaults.notificationIconWeight)
                 notificationIcon.symbolConfiguration = symbolConfiguration
                 
                 notificationIcon.image = NSImage(systemSymbolName: popupWindowNotificationIcon, accessibilityDescription: nil)
@@ -196,7 +216,7 @@ class ViewController: NSViewController {
 
         } else {
             if #available(macOS 11.0, *) {
-                let symbolConfiguration = NSImage.SymbolConfiguration(pointSize: AppBundleDefaults.notificationIconSize, weight: .light)
+                let symbolConfiguration = NSImage.SymbolConfiguration(pointSize: AppBundleDefaults.notificationIconSize, weight: AppBundleDefaults.notificationIconWeight)
                 notificationIcon.symbolConfiguration = symbolConfiguration
                 notificationIcon.image = NSImage(systemSymbolName: AppBundleDefaults.notificationIcon, accessibilityDescription: nil)
             } else {
@@ -204,55 +224,7 @@ class ViewController: NSViewController {
             }
         }
     }
-
-    func startWatchingForFile(pathToWatch: String, label: String) {
-
-        mainButton.isEnabled = false
-        notificationProgressBarLabel.stringValue = label
-        notificationProgressBarLabel.isHidden = false
-        notificationProgressBar.doubleValue = 0
-        notificationProgressBar.maxValue = 1
-        notificationProgressBar.isIndeterminate = true
-        notificationProgressBar.isHidden = false
-        notificationProgressBar.startAnimation(self)
-
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
-                let pathToWatch = FileManager.default.fileExists(atPath: pathToWatch)
-                if pathToWatch == true {
-
-                self.notificationProgressBar.isIndeterminate = false
-                self.notificationProgressBar.doubleValue = 1
-                self.mainButton.isEnabled = true
-        
-                self.notificationProgressBarLabel.stringValue = "Proceso completo."
-                timer.invalidate()
-            }
-        }
-    }
     
-    func updateProgressBarLabel(label: String) {
-        notificationProgressBarLabel.isHidden = false
-        notificationProgressBarLabel.stringValue = label
-    }
-    
-    func initProgressBar(stepsCount:Int) {
-        // Disable main and secondary buttons
-        mainButton.isEnabled = false
-        secondaryButton.isEnabled = false
-        
-        // Enable progress bar
-        notificationProgressBar.isIndeterminate = true
-        notificationProgressBar.startAnimation(self)
-        notificationProgressBar.maxValue = Double(stepsCount)
-        notificationProgressBar.doubleValue = 0
-        notificationProgressBar.isHidden = false
-        
-    }
-    
-    func incrementProgressBar() {
-        notificationProgressBar.isIndeterminate = false
-        notificationProgressBar.increment(by: 1)
-    }
     
     /// Display a blurred background window
     func displayBackgroundWindow() {
@@ -265,16 +237,82 @@ class ViewController: NSViewController {
         NSApp.windows[0].level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
     }
     
-
+    /// Display progress indicator
+    
+    func displayProgressIndicator(displayIndicator: Bool) {
+        if displayIndicator {
+            notificationProgressIndicator.startAnimation(self)
+            
+            notificationProgressIndicatorLabel.stringValue = "Ejecutando comando..."
+            
+            notificationProgressIndicator.isHidden = false
+            notificationProgressIndicatorLabel.isHidden = false
+            
+        } else {
+            
+        }
+    }
+    
+    
     @IBAction func mainButtonClicked(_ sender: Any) {
+        guard mainButtonAction != "" else {
+            print("0")
+            
+            logger.error("No button action found. Exiting...")
+            
+            //NSApp.terminate(self)
+            NSApplication.shared.terminate(self)
+            return
+        }
+        
+        // Check for and execute main button action
+        if mainButtonActionType.lowercased() == "app" {
+            displayProgressIndicator(displayIndicator: true)
+            openAppWithBundleIdentifier(bundleID: mainButtonAction)
+            
+        } else if mainButtonActionType.lowercased() == "url" {
+            openLinkFromURL(linkURL: mainButtonAction)
+            
+        } else if mainButtonActionType.lowercased() == "command" {
+            runCommand(executeCommand: mainButtonAction)
+        }
+        
+        // Print return code
         print("0")
-        NSApp.terminate(self)
+        
+        // Quit app
+        NSApplication.shared.terminate(self)
     }
     
     @IBAction func secondaryButtonClicked(_ sender: Any) {
-        print("2")
-        NSApp.terminate(self)
+        print("1")
+        NSApplication.shared.terminate(self)
     }
     
+    @IBAction func helpButtonClicked(_ sender: Any) {
+        // Display New Personal Recovery Key in Alert window
+        
+        let storyboardName = NSStoryboard.Name(stringLiteral: "Main")
+        let storyboard = NSStoryboard(name: storyboardName, bundle: nil)
+        
+        let storyboardID = NSStoryboard.SceneIdentifier(stringLiteral: "HelpBubbleViewController")
+        
+        if let helpBubbleViewController = storyboard.instantiateController(withIdentifier: storyboardID) as? NSViewController {
+            if helpBubbleViewController is HelpBubbleViewController {
+                if let recoveryKeyDisplayVC = helpBubbleViewController as? HelpBubbleViewController {
+                    recoveryKeyDisplayVC.helpDescription = popupWindowHelpButtonDescription
+                }
+                
+            }
+            self.present(helpBubbleViewController,
+                         asPopoverRelativeTo: (sender as AnyObject).convert((sender as AnyObject).bounds, to: self.view),
+                         of: self.view,
+                         preferredEdge: .maxX,
+                         behavior: .semitransient)
+        }
+            
+            
+
+    }
     
 }
